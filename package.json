@@ -1,0 +1,21 @@
+{
+  "name": "chug",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Grant Forrest",
+  "license": "All Rights Reserved",
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-less": "^1.0.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "jquery": "^2.1.4"
+  },
+  "devDependencies": {
+    "grunt-electron": "^2.0.0"
+  }
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>CHUG</title>
+		<link rel="stylesheet" href="css/style.css"/>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	</head>
+	<body>
+		<div class="titlebar" style="-webkit-app-region: drag">
+			<div class="titlebar-title"><img src="img/logo.svg"/></div>
+			<div class="window-minimize" style="-webkit-app-region: no-drag"><i class="fa fa-minus"></i></div>
+			<div class="window-maximize" style="-webkit-app-region: no-drag"><i class="fa fa-square-o"></i></div>
+			<div class="window-close" style="-webkit-app-region: no-drag"><i class="fa fa-times"></i></div>
+		</div>
+
+		<form id="loginForm">
+			<input type="text" name="username" placeholder="SIP Username"/>
+			<input type="text" name="password" placeholder="SIP Password"/>
+			<input type="text" name="domain" placeholder="SIP Domain"/>
+			<input type="submit" value="Connect"/>
+		</form>
+
+		<div class="call">
+			<div class="incoming-call-info">
+				<h3>Call Connecting</h3>
+				<div class="incoming-call-info-number"></div>
+				<div id="answer"><i class="fa fa-phone"></i></div>
+				<div id="reject"><i class="fa fa-phone"></i></div>
+			</div>
+			<div class="call-controls">
+				<div id="hangup"><i class="fa fa-phone"></i></div>
+				<div id="answer"><i class="fa fa-phone"></i></div>
+				<div id="reject"><i class="fa fa-phone"></i></div>
+				<div id="to">
+					<input id="toNumber" type="text" placeholder="+15553334444"/>
+				</div>
+				<div id="connect"><i class="fa fa-phone"></i></div>
+			</div>
+
+			<div class="in-call-controls">
+				<div id="dialPad">
+					<div class="dialpad-button" data-value="1" unselectable="on">1</div>
+					<div class="dialpad-button" data-value="2" unselectable="on">2</div>
+					<div class="dialpad-button" data-value="3" unselectable="on">3</div>
+					<div class="dialpad-button" data-value="4" unselectable="on">4</div>
+					<div class="dialpad-button" data-value="5" unselectable="on">5</div>
+					<div class="dialpad-button" data-value="6" unselectable="on">6</div>
+					<div class="dialpad-button" data-value="7" unselectable="on">7</div>
+					<div class="dialpad-button" data-value="8" unselectable="on">8</div>
+					<div class="dialpad-button" data-value="9" unselectable="on">9</div>
+					<div class="dialpad-button" data-value="*" unselectable="on">*</div>
+					<div class="dialpad-button" data-value="0" unselectable="on">0</div>
+					<div class="dialpad-button" data-value="#" unselectable="on">#</div>
+				</div>
+				<div id="mute">
+					<i id="muteIcon" class="fa fa-microphone"></i>
+				</div>
+			</div>
+		</div>
+
+		<script src="//d23gfec6haquvp.cloudfront.net/0.3.4/BWClient.js"></script>
+		<script src="client/index.js"></script>
+		<script src="client/windowControls.js"></script>
+	</body>
+</html>
