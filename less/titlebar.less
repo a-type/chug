@@ -1,0 +1,62 @@
+.titlebar {
+	background: @color-gray;
+	height: 32px;
+	position: fixed;
+	width: 100%;
+	display: flex;
+	z-index: 100;
+	top: 0;
+	justify-content: flex-end;
+	line-height: 32px;
+}
+
+@control-button-color: darken(@color-gray, 12%);
+
+.window-control-button {
+	width: 48px;
+	height: 32px;
+	color: @color-white;
+	cursor: pointer;
+	position: relative;
+
+	&:hover {
+		background: darken(@control-button-color, 4%);
+	}
+
+	i {
+		font-size: 9px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+}
+
+.window-close {
+	.window-control-button();
+
+	i {
+		font-size: 10px;
+	}
+
+	&:hover {
+		background: @color-primary;
+	}
+}
+
+.window-maximize {
+	.window-control-button();
+}
+
+.window-minimize {
+	.window-control-button();
+
+	i {
+		top: 60%;
+	}
+}
+
+.titlebar-title {
+	.brand-font();
+	color: @color-primary;
+}

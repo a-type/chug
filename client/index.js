@@ -6,8 +6,8 @@ var $ = require("jquery");
 document.addEventListener("DOMContentLoaded", function () {
 	$("#loginForm").submit(login);
 	$("#connectCall").click(connectCall);
-	$("#answer").click(answerCall);
-	$("#reject").click(rejectCall);
+	$(".answer").click(answerCall);
+	$(".reject").click(rejectCall);
 	$("#hangup").click(hangup);
 	$("#mute").click(mute);
 	$("#toField").keypress(function (event) {
@@ -16,12 +16,19 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 	});
 	$(".dialpad-button").click(sendDTMF);
+
+	console.on("log", addLog);
+	console.on("warn", addLog);
+	console.on("error", addLog);
+	console.on("info", addLog);
 });
 
 var phone;
 var currentCall;
 
-function login () {
+function login (event) {
+	event.preventDefault();
+
 	var username = $("#username").val();
 	var password = $("#password").val();
 	var domain   = $("#domain").val();
@@ -34,7 +41,9 @@ function login () {
 	});
 	phone.register();
 
-	$("#loginForm").hide();
+	var login = $(".login");
+	login.addClass("closing");
+	setTimeout(function () { login.hide(500); }, 1000);
 
 	phone.on("incomingCall", handleIncomingCall);
 
@@ -103,12 +112,16 @@ function handleCallEnded () {
 	refreshUI();
 }
 
+function addLog (log) {
+	$(".logs").prepend($("<div class='logitem'>" + log + "</div>"));
+}
+
 function refreshUI () {
 	if (currentCall) {
 		var info = currentCall.getInfo();
 
-		if (info.status === "connected") {
-			$(".call").removeClass("connecting").addClass("in-call");
+		if (info.status === "connecting") {
+			$(".call").addClass("connecting").removeClass("in-call");
 
 			if (info.direction === "in") {
 				$(".call").addClass("incoming");
@@ -118,8 +131,8 @@ function refreshUI () {
 				$(".call").removeClass("incoming");
 			}
 		}
-		else if (info.status === "connecting") {
-			$(".call").removeClass("in-call").addClass("connecting");
+		else if (info.status === "connected") {
+			$(".call").addClass("in-call").removeClass("connecting");
 		}
 
 		if (info.microphoneMuted) {

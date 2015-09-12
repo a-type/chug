@@ -1,0 +1,92 @@
+.login {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: @color-white;
+
+	z-index: 50;
+
+	display: flex;
+
+	form {
+		position: relative;
+		z-index: 10;
+		margin: auto;
+		margin-top: 10%;
+
+		h1 {
+			color: @color-primary;
+			text-align: center;
+			display: block;
+			font-size: 64px;
+		}
+	}
+
+	.soda {
+		position: fixed;
+		z-index: 5;
+		top: 60%;
+		height: 200%;
+		left: 0;
+		width: 100%;
+		background-color: @color-secondary;
+
+		animation-name: ebbflow;
+		animation-duration: 4s;
+		animation-iteration-count: infinite;
+		animation-direction: alternate;
+		animation-timing-function: ease-in-out;
+
+		.bubble {
+			width: 32px;
+			height: 32px;
+			border-radius: 100%;
+			background-color: fade(@color-white, 20%);
+			position: fixed;
+			top: 30%;
+			z-index: 12;
+
+			animation-name: bubble;
+			animation-duration: 8s;
+			animation-iteration-count: infinite;
+			animation-timing-function: linear;
+		}
+	}
+
+	&.closing {
+		.soda {
+			transition: top 1s;
+			top: 0%;
+		}
+	}
+}
+
+@keyframes ebbflow {
+	from {
+		transform: translateY(0);
+	}
+
+	to {
+		transform: translateY(-64px);
+	}
+}
+
+@keyframes rotate {
+	100% { transform : rotate(360deg); }
+}
+
+@keyframes bubble {
+	0% { transform: translate(0, 0); opacity: 0.9; }
+	10% { transform: translate(8px -3vh); opacity: 0.8; }
+	20% { transform: translate(-2px, -8vh); opacity: 0.7; }
+	30% { transform: translate(-4px, -13vh); opacity: 0.6; }
+	40% { transform: translate(4px, -22vh); opacity: 0.5; }
+	50% { transform: translate(12px, -29vh); opacity: 0.4; }
+	60% { transform: translate(0px, -36vh); opacity: 0.3; }
+	70% { transform: translate(-8px, -43vh); opacity: 0.2; }
+	80% { transform: translate(-10px, -50vh); opacity: 0.1; }
+	90% { transform: translate(0px, -57vh); opacity: 0; }
+	100% { transform: translate(0px, -60vh); opacity: 0; }
+}

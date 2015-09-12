@@ -2,35 +2,66 @@
 <html>
 	<head>
 		<title>CHUG</title>
+		<link href='https://fonts.googleapis.com/css?family=Russo+One' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="css/style.css"/>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	</head>
 	<body>
 		<div class="titlebar" style="-webkit-app-region: drag">
-			<div class="titlebar-title"><img src="img/logo.svg"/></div>
+			<div class="titlebar-title">CHUG</div>
 			<div class="window-minimize" style="-webkit-app-region: no-drag"><i class="fa fa-minus"></i></div>
 			<div class="window-maximize" style="-webkit-app-region: no-drag"><i class="fa fa-square-o"></i></div>
 			<div class="window-close" style="-webkit-app-region: no-drag"><i class="fa fa-times"></i></div>
 		</div>
 
-		<form id="loginForm">
-			<input type="text" name="username" placeholder="SIP Username"/>
-			<input type="text" name="password" placeholder="SIP Password"/>
-			<input type="text" name="domain" placeholder="SIP Domain"/>
-			<input type="submit" value="Connect"/>
-		</form>
+		<div class="login">
+			<form id="loginForm">
+				<h1 class="brand-font">CHUG</h1>
+				<input type="text" name="username" id="username" placeholder="SIP Username"/>
+				<input type="text" name="password" id="password" placeholder="SIP Password"/>
+				<input type="text" name="domain" id="domain" placeholder="SIP Domain"/>
+				<input type="submit" value="Connect"/>
+			</form>
+			<div class="soda">
+				<div class="bubble" style="left: 0"></div>
+				<div class="bubble" style="left: 5%; animation-delay: 1s"></div>
+				<div class="bubble" style="left: 8%; animation-delay: 2.2s"></div>
+				<div class="bubble" style="left: 20%; animation-delay: 0.8s"></div>
+				<div class="bubble" style="left: 24%; animation-delay: 3s"></div>
+				<div class="bubble" style="left: 30%; animation-delay: 6s"></div>
+				<div class="bubble" style="left: 32%; animation-delay: 4s"></div>
+				<div class="bubble" style="left: 43%; animation-delay: 7s"></div>
+				<div class="bubble" style="left: 50%; animation-delay: 0.5s"></div>
+				<div class="bubble" style="left: 52%; animation-delay: 2s"></div>
+				<div class="bubble" style="left: 60%; animation-delay: 4.3s"></div>
+				<div class="bubble" style="left: 63%; animation-delay: 1.5s"></div>
+				<div class="bubble" style="left: 72%; animation-delay: 2s"></div>
+				<div class="bubble" style="left: 73%; animation-delay: 6.7s"></div>
+				<div class="bubble" style="left: 80%; animation-delay: 3.33s"></div>
+				<div class="bubble" style="left: 84%; animation-delay: 2.8s"></div>
+				<div class="bubble" style="left: 85%; animation-delay: 6.6s"></div>
+				<div class="bubble" style="left: 92%; animation-delay: 0.4s"></div>
+			</div>
+		</div>
 
 		<div class="call">
+			<div class="log-list">
+				<div class="logs"></div>
+			</div>
 			<div class="incoming-call-info">
 				<h3>Call Connecting</h3>
-				<div class="incoming-call-info-number"></div>
-				<div id="answer"><i class="fa fa-phone"></i></div>
-				<div id="reject"><i class="fa fa-phone"></i></div>
+				<h3 class="incoming-call-info-number"></h3>
+				<div>
+					<div class="answer"><i class="fa fa-phone"></i></div>
+				</div>
+				<div>
+					<div class="reject"><i class="fa fa-phone"></i></div>
+				</div>
 			</div>
 			<div class="call-controls">
 				<div id="hangup"><i class="fa fa-phone"></i></div>
-				<div id="answer"><i class="fa fa-phone"></i></div>
-				<div id="reject"><i class="fa fa-phone"></i></div>
+				<!--<div class="answer"><i class="fa fa-phone"></i></div>
+				<div class="reject"><i class="fa fa-phone"></i></div>-->
 				<div id="to">
 					<input id="toNumber" type="text" placeholder="+15553334444"/>
 				</div>
@@ -38,19 +69,19 @@
 			</div>
 
 			<div class="in-call-controls">
-				<div id="dialPad">
-					<div class="dialpad-button" data-value="1" unselectable="on">1</div>
-					<div class="dialpad-button" data-value="2" unselectable="on">2</div>
-					<div class="dialpad-button" data-value="3" unselectable="on">3</div>
-					<div class="dialpad-button" data-value="4" unselectable="on">4</div>
-					<div class="dialpad-button" data-value="5" unselectable="on">5</div>
-					<div class="dialpad-button" data-value="6" unselectable="on">6</div>
-					<div class="dialpad-button" data-value="7" unselectable="on">7</div>
-					<div class="dialpad-button" data-value="8" unselectable="on">8</div>
-					<div class="dialpad-button" data-value="9" unselectable="on">9</div>
-					<div class="dialpad-button" data-value="*" unselectable="on">*</div>
-					<div class="dialpad-button" data-value="0" unselectable="on">0</div>
-					<div class="dialpad-button" data-value="#" unselectable="on">#</div>
+				<div class="dialpad">
+					<div class="dialpad-button" data-value="1" unselectable="on"><i>1</i></div>
+					<div class="dialpad-button" data-value="2" unselectable="on"><i>2</i></div>
+					<div class="dialpad-button" data-value="3" unselectable="on"><i>3</i></div>
+					<div class="dialpad-button" data-value="4" unselectable="on"><i>4</i></div>
+					<div class="dialpad-button" data-value="5" unselectable="on"><i>5</i></div>
+					<div class="dialpad-button" data-value="6" unselectable="on"><i>6</i></div>
+					<div class="dialpad-button" data-value="7" unselectable="on"><i>7</i></div>
+					<div class="dialpad-button" data-value="8" unselectable="on"><i>8</i></div>
+					<div class="dialpad-button" data-value="9" unselectable="on"><i>9</i></div>
+					<div class="dialpad-button" data-value="*" unselectable="on"><i>*</i></div>
+					<div class="dialpad-button" data-value="0" unselectable="on"><i>0</i></div>
+					<div class="dialpad-button" data-value="#" unselectable="on"><i>#</i></div>
 				</div>
 				<div id="mute">
 					<i id="muteIcon" class="fa fa-microphone"></i>
@@ -58,7 +89,45 @@
 			</div>
 		</div>
 
-		<script src="//d23gfec6haquvp.cloudfront.net/0.3.4/BWClient.js"></script>
+		<script type="text/javascript">
+			var oldConsole = console;
+
+			var util = require("util");
+			var EventEmitter = require("events").EventEmitter;
+
+			function FakeConsole () {
+				EventEmitter.call(this, arguments);
+			}
+			util.inherits(FakeConsole, EventEmitter);
+
+			FakeConsole.prototype.log = function () {
+				oldConsole.log.apply(oldConsole, arguments);
+
+				this.emit("log", arguments[0]);
+			};
+
+			FakeConsole.prototype.warn = function () {
+				oldConsole.warn.apply(oldConsole, arguments);
+
+				this.emit("warn", arguments[0]);
+			};
+
+			FakeConsole.prototype.error = function () {
+				oldConsole.error.apply(oldConsole, arguments);
+
+				this.emit("error", arguments[0]);
+			};
+
+			FakeConsole.prototype.info = function () {
+				oldConsole.info.apply(oldConsole, arguments);
+
+				this.emit("info", arguments[0]);
+			};
+
+			var console = new FakeConsole();
+			window.console = console;
+		</script>
+		<script src="https://d23gfec6haquvp.cloudfront.net/0.3.4/BWClient.js"></script>
 		<script src="client/index.js"></script>
 		<script src="client/windowControls.js"></script>
 	</body>

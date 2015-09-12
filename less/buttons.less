@@ -1,0 +1,50 @@
+.button-primary {
+	background: @color-primary;
+	border: none;
+	border-bottom: 4px solid @color-secondary;
+	border-radius: 4px;
+	padding: 8px;
+	color: white;
+	font-size: 14px;
+	cursor: pointer;
+	display: inline-block;
+
+	&:hover {
+		background: lighten(@color-primary, 5%);
+		border-bottom-color: lighten(@color-secondary, 5%);
+	}
+
+	&:active {
+		border-bottom-width: 0px;
+		transform: translate(0, 4px);
+	}
+}
+
+.icon-button(@bg: @color-gray) {
+	position: relative;
+
+	background-color: @bg;
+	width: 48px;
+	height: 48px;
+	border-radius: 100%;
+	border-bottom: 4px solid darken(@bg, 4%);
+
+	cursor: pointer;
+
+	i {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	&:hover {
+		background: lighten(@bg, 5%);
+		border-bottom-color: lighten(darken(@bg, 4%), 5%);
+	}
+
+	&:active {
+		border-bottom-width: 0px;
+		transform: translate(0, 4px);
+	}
+}
