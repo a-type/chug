@@ -136,7 +136,7 @@ function connectCall () {
 }
 
 function dtmfPressed (event) {
-	var target = $(event.target);
+	var target = $(event.target).closest(".dialpad-button");
 	var value = target.data("value");
 
 	client.sendDTMF(value);
@@ -189,10 +189,10 @@ function refreshUI () {
 		}
 
 		if (info.microphoneMuted) {
-			$(".muteIcon").addClass("fa-microphone-slash").removeClass("fa-microphone");
+			$("#muteIcon").addClass("fa-microphone-slash").removeClass("fa-microphone");
 		}
 		else {
-			$(".muteIcon").addClass("fa-microphone").removeClass("fa-microphone-slash");
+			$("#muteIcon").addClass("fa-microphone").removeClass("fa-microphone-slash");
 		}
 	}
 	else {

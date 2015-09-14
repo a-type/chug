@@ -67,10 +67,10 @@ Client.prototype.hangup = function () {
 
 Client.prototype.mute = function () {
 	if (this.currentCall.getInfo().microphoneMuted) {
-		call.unmute();
+		this.currentCall.unmute();
 	}
 	else {
-		call.mute();
+		this.currentCall.mute();
 	}
 
 	this.emit("stateChanged");
