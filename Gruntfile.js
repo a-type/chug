@@ -1,4 +1,6 @@
 "use strict";
+var ignoreBuild = "dist|less|README.md|LICENSE.md|img|node_modules/(grunt|grunt-cli|grunt-contrib-less|grunt-contrib-watch|grunt-electron|.bin)";
+
 module.exports = function (grunt) {
 	grunt.initConfig({
 		watch : {
@@ -26,7 +28,7 @@ module.exports = function (grunt) {
 					platform : "win32",
 					arch     : "ia32",
 					icon     : "img/icon.ico",
-					ignore   : "dist|less|README.md|screen1.png|icon.png|logo.png|icon.svg"
+					ignore   : ignoreBuild
 				}
 			},
 
@@ -39,7 +41,7 @@ module.exports = function (grunt) {
 					platform : "win32",
 					arch     : "x64",
 					icon     : "img/icon.ico",
-					ignore   : "dist|less|README.md|screen1.png|icon.png|logo.png|icon.svg"
+					ignore   : ignoreBuild
 				}
 			},
 
@@ -51,7 +53,7 @@ module.exports = function (grunt) {
 					version  : "0.32.2",
 					platform : "linux",
 					arch     : "ia32",
-					ignore   : "dist|less|README.md|screen1.png|icon.png|logo.png|icon.svg"
+					ignore   : ignoreBuild
 				}
 			},
 
@@ -63,7 +65,7 @@ module.exports = function (grunt) {
 					version  : "0.32.2",
 					platform : "linux",
 					arch     : "x64",
-					ignore   : "dist|less|README.md|screen1.png|icon.png|logo.png|icon.svg"
+					ignore   : ignoreBuild
 				}
 			},
 
@@ -75,7 +77,7 @@ module.exports = function (grunt) {
 					version  : "0.32.2",
 					platform : "darwin",
 					arch     : "ia32",
-					ignore   : "dist|less|README.md|screen1.png|icon.png|logo.png|icon.svg"
+					ignore   : ignoreBuild
 				}
 			},
 
@@ -87,7 +89,7 @@ module.exports = function (grunt) {
 					version  : "0.32.2",
 					platform : "darwin",
 					arch     : "x64",
-					ignore   : "dist|less|README.md|screen1.png|icon.png|logo.png|icon.svg"
+					ignore   : ignoreBuild
 				}
 			}
 		}
