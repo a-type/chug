@@ -1,5 +1,5 @@
 "use strict";
-var ignoreBuild = "dist|less|README.md|LICENSE.md|img|node_modules/(grunt|grunt-cli|grunt-contrib-less|grunt-contrib-watch|grunt-electron|.bin)";
+var ignoreBuild = "./dist|less|README.md|LICENSE.md|img|node_modules/(grunt|grunt-cli|grunt-contrib-less|grunt-contrib-watch|grunt-electron|.bin)";
 
 module.exports = function (grunt) {
 	grunt.initConfig({
