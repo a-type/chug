@@ -1,5 +1,6 @@
 "use strict";
-var ignoreBuild = "./dist|less|README.md|LICENSE.md|img|node_modules/(grunt|grunt-cli|grunt-contrib-less|grunt-contrib-watch|grunt-electron|.bin)";
+var buildFolder = "chug-dist"
+var ignoreBuild = buildFolder + "|less|README.md|LICENSE.md|img|node_modules/(grunt|grunt-cli|grunt-contrib-less|grunt-contrib-watch|grunt-electron|.bin)";
 
 module.exports = function (grunt) {
 	grunt.initConfig({
@@ -23,7 +24,7 @@ module.exports = function (grunt) {
 				options : {
 					name     : "Chug",
 					dir      : ".",
-					out      : "dist",
+					out      : buildFolder,
 					version  : "0.32.2",
 					platform : "win32",
 					arch     : "ia32",
@@ -36,7 +37,7 @@ module.exports = function (grunt) {
 				options : {
 					name     : "Chug",
 					dir      : ".",
-					out      : "dist",
+					out      : buildFolder,
 					version  : "0.32.2",
 					platform : "win32",
 					arch     : "x64",
@@ -49,7 +50,7 @@ module.exports = function (grunt) {
 				options : {
 					name     : "Chug",
 					dir      : ".",
-					out      : "dist",
+					out      : buildFolder,
 					version  : "0.32.2",
 					platform : "linux",
 					arch     : "ia32",
@@ -61,7 +62,7 @@ module.exports = function (grunt) {
 				options : {
 					name     : "Chug",
 					dir      : ".",
-					out      : "dist",
+					out      : buildFolder,
 					version  : "0.32.2",
 					platform : "linux",
 					arch     : "x64",
@@ -73,7 +74,7 @@ module.exports = function (grunt) {
 				options : {
 					name     : "Chug",
 					dir      : ".",
-					out      : "dist",
+					out      : buildFolder,
 					version  : "0.32.2",
 					platform : "darwin",
 					arch     : "ia32",
@@ -85,7 +86,7 @@ module.exports = function (grunt) {
 				options : {
 					name     : "Chug",
 					dir      : ".",
-					out      : "dist",
+					out      : buildFolder,
 					version  : "0.32.2",
 					platform : "darwin",
 					arch     : "x64",
