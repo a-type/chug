@@ -59,13 +59,23 @@
 				</div>
 			</div>
 			<div class="call-controls">
-				<div id="hangup"><i class="fa fa-phone"></i></div>
-				<!--<div class="answer"><i class="fa fa-phone"></i></div>
-				<div class="reject"><i class="fa fa-phone"></i></div>-->
-				<div id="to">
-					<input id="toNumber" type="text" placeholder="+15553334444"/>
+				<div class="controls-main">
+					<div id="hangup"><i class="fa fa-phone"></i></div>
+					<!--<div class="answer"><i class="fa fa-phone"></i></div>
+					<div class="reject"><i class="fa fa-phone"></i></div>-->
+					<div id="to">
+						<input id="toNumber" type="text" placeholder="+15553334444"/>
+					</div>
+					<div id="connect"><i class="fa fa-phone"></i></div>
+					<div class="expander">
+						...
+					</div>
 				</div>
-				<div id="connect"><i class="fa fa-phone"></i></div>
+				<div class="controls-extra">
+					<div class="identity">
+						<input id="identity" type="text" placeholder="identity number"/>
+					</div>
+				</div>
 			</div>
 
 			<div class="in-call-controls">
@@ -86,6 +96,7 @@
 				<div id="mute">
 					<i id="muteIcon" class="fa fa-microphone"></i>
 				</div>
+				<audio id="remoteAudio" style="display: none"/>
 			</div>
 		</div>
 
@@ -127,8 +138,8 @@
 			var console = new FakeConsole();
 			window.console = console;
 		</script>
-		<script src="https://d23gfec6haquvp.cloudfront.net/0.3.4/BWClient.js"></script>
-		<script src="client/index.js"></script>
+		<script src="http://code.bandwidth.com/bandwidth-0.9.2.js"></script>
+		<script src="./chug.js"></script>
 		<script src="client/windowControls.js"></script>
 	</body>
 </html>

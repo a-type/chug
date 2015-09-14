@@ -1,38 +1,19 @@
 /* global: BWClient */
 "use strict";
-
-var $ = require("jquery");
-
-document.addEventListener("DOMContentLoaded", function () {
-	$("#loginForm").submit(login);
-	$("#connectCall").click(connectCall);
-	$(".answer").click(answerCall);
-	$(".reject").click(rejectCall);
-	$("#hangup").click(hangup);
-	$("#mute").click(mute);
-	$("#toField").keypress(function (event) {
-		if (e.which === 13) {
-			connectCall();
-		}
-	});
-	$(".dialpad-button").click(sendDTMF);
-
-	console.on("log", addLog);
-	console.on("warn", addLog);
-	console.on("error", addLog);
-	console.on("info", addLog);
-});
+var EventEmitter = require("events").EventEmitter;
+var util = require("util");
 
 var phone;
-var currentCall;
 
-function login (event) {
-	event.preventDefault();
+function Client (remoteAudioElement) {
+	EventEmitter.call(this);
+	this.currentCall = null;
 
-	var username = $("#username").val();
-	var password = $("#password").val();
-	var domain   = $("#domain").val();
+	this.remoteAudioElement = remoteAudioElement;
+}
+util.inherits(Client, EventEmitter);
 
+Client.prototype.login = function (username, password, domain) {
 	phone = BWClient.createPhone({
 		username : username,
 		password : password,
@@ -41,105 +22,65 @@ function login (event) {
 	});
 	phone.register();
 
-	var login = $(".login");
-	login.addClass("closing");
-	setTimeout(function () { login.hide(500); }, 1000);
-
-	phone.on("incomingCall", handleIncomingCall);
+	phone.on("incomingCall", this.emit.bind(this, "stateChanged"));
 
 	return false;
-}
+};
 
-function handleIncomingCall (incomingCall) {
-	if (currentCall) {
-		currentCall.hangup();
-		currentCall = null;
+Client.prototype.handleIncomingCall = function (incomingCall) {
+	if (this.currentCall) {
+		this.currentCall.hangup();
+		this.currentCall = null;
 	}
 
-	currentCall = incomingCall;
-	currentCall.on("ended", handleCallEnded);
-	currentCall.on("connected", refreshUI);
+	this.currentCall = incomingCall;
+	this.currentCall.on("ended", this.handleCallEnded.bind(this));
+	this.currentCall.on("connected", this.emit.bind(this, "stateChanged"));
+};
 
-	refreshUI();
-}
+Client.prototype.connectCall = function (to, options) {
+	this.currentCall = phone.call(to, options);
+	this.currentCall.setRemoteAudioElement(this.remoteAudioElement);
+	this.currentCall.on("connected", this.emit.bind(this, "stateChanged"));
+	this.currentCall.on("ended", this.handleCallEnded.bind(this));
 
-function connectCall () {
-	var to = $("#toNumber").val();
-	currentCall = phone.call(to);
-	currentCall.setRemoteAudioElement(document.getElementById("remote-audio"));
-	currentCall.on("connected", refreshUI);
-	currentCall.on("ended", handleCallEnded);
+	this.emit("stateChanged");
+};
 
-	refreshUI();
-}
+Client.prototype.answerCall = function () {
+	this.currentCall.setRemoteAudioElement(this.remoteAudioElement);
+	this.currentCall.accept();
+};
 
-function answerCall () {
-	currentCall.setRemoteAudioElement(document.getElementById("remote-audio"));
-	currentCall.accept();
-}
+Client.prototype.rejectCall = function () {
+	this.currentCall.reject();
+};
 
-function rejectCall () {
-	currentCall.reject();
-}
+Client.prototype.hangup = function () {
+	this.currentCall.hangup();
+	this.currentCall = null;
 
-function hangup () {
-	currentCall.hangup();
-	currentCall = null;
+	this.emit("stateChanged");
+};
 
-	refreshUI();
-}
-
-function mute () {
-	if (currentCall.getInfo().microphoneMuted) {
+Client.prototype.mute = function () {
+	if (this.currentCall.getInfo().microphoneMuted) {
 		call.unmute();
 	}
 	else {
 		call.mute();
 	}
 
-	refreshUI();
-}
+	this.emit("stateChanged");
+};
 
-function sendDTMF (event) {
-	var target = $(event.target);
-	var value = target.data("value");
+Client.prototype.sendDTMF = function (value) {
+	this.currentCall.sendDtmf(value.toString());
+};
 
-	currentCall.sendDtmf(value.toString());
-}
+Client.prototype.handleCallEnded = function () {
+	this.currentCall = null;
+	this.emit("stateChanged");
+};
 
-function handleCallEnded () {
-	currentCall = null;
-	refreshUI();
-}
-
-function addLog (log) {
-	$(".logs").prepend($("<div class='logitem'>" + log + "</div>"));
-}
-
-function refreshUI () {
-	if (currentCall) {
-		var info = currentCall.getInfo();
-
-		if (info.status === "connecting") {
-			$(".call").addClass("connecting").removeClass("in-call");
-
-			if (info.direction === "in") {
-				$(".call").addClass("incoming");
-				$(".incoming-call-info-number").html(info.remoteId);
-			}
-			else {
-				$(".call").removeClass("incoming");
-			}
-		}
-		else if (info.status === "connected") {
-			$(".call").addClass("in-call").removeClass("connecting");
-		}
-
-		if (info.microphoneMuted) {
-			$(".muteIcon").addClass("fa-microphone-slash").removeClass("fa-microphone");
-		}
-		else {
-			$(".muteIcon").addClass("fa-microphone").removeClass("fa-microphone-slash");
-		}
-	}
-}
+module.exports = Client;
