@@ -1,0 +1,48 @@
+@panel-expander-width: 32px;
+
+.panels {
+	display: flex;
+	flex-direction: row;
+	padding-bottom: 80px;
+	padding-top: 32px;
+	width: 100%;
+	height: 100vh;
+}
+
+.panel-mixin (@natural-width: 400px) {
+	width: auto;
+	overflow-x: hidden;
+
+	display: flex;
+	flex-direction: row;
+
+	&>*:not(.expander) {
+		width: 0;
+	}
+
+	.expander {
+		background-color: @color-gray;
+		width: @panel-expander-width;
+		display: flex;
+		cursor: pointer;
+
+		.label {
+			margin: auto;
+
+			.label-text {
+				margin: auto;
+				color: darken(@color-gray, 50%);
+				transform: rotateZ(-90deg) translateY(-5px);
+				.brand-font();
+				font-size: 16px;
+				text-transform: uppercase;
+			}
+		}
+	}
+
+	&.expanded {
+		&>*:not(.expander) {
+			width: @natural-width;
+		}
+	}
+}

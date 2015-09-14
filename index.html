@@ -45,58 +45,63 @@
 		</div>
 
 		<div class="call">
-			<div class="log-list">
-				<div class="logs"></div>
+			<div class="panels">
+				<div class="log-list panel">
+					<div class="log-list-container"><div class="logs"></div></div>
+					<div class="expander"><div class="label"><div class="label-text">logs</div></div></div>
+				</div>
 			</div>
 			<div class="incoming-call-info">
-				<h3>Call Connecting</h3>
-				<h3 class="incoming-call-info-number"></h3>
-				<div>
+				<b>Call Connecting</b>
+				<b class="incoming-call-info-number"></b>
+				<div class="button-container">
 					<div class="answer"><i class="fa fa-phone"></i></div>
+					<label>Accept</label>
 				</div>
-				<div>
+				<div class="button-container">
 					<div class="reject"><i class="fa fa-phone"></i></div>
+					<label>Reject</label>
 				</div>
 			</div>
 			<div class="call-controls">
 				<div class="controls-main">
 					<div id="hangup"><i class="fa fa-phone"></i></div>
-					<!--<div class="answer"><i class="fa fa-phone"></i></div>
-					<div class="reject"><i class="fa fa-phone"></i></div>-->
 					<div id="to">
 						<input id="toNumber" type="text" placeholder="+15553334444"/>
 					</div>
 					<div id="connect"><i class="fa fa-phone"></i></div>
-					<div class="expander">
+					<div class="controls-info"><div class="controls-info-identity"></div></div>
+					<div class="controls-expander" title="more options">
 						...
 					</div>
 				</div>
 				<div class="controls-extra">
 					<div class="identity">
-						<input id="identity" type="text" placeholder="identity number"/>
+						<label>Identity:</label><input id="identity" type="text" placeholder="identity number"/>
 					</div>
 				</div>
-			</div>
-
-			<div class="in-call-controls">
-				<div class="dialpad">
-					<div class="dialpad-button" data-value="1" unselectable="on"><i>1</i></div>
-					<div class="dialpad-button" data-value="2" unselectable="on"><i>2</i></div>
-					<div class="dialpad-button" data-value="3" unselectable="on"><i>3</i></div>
-					<div class="dialpad-button" data-value="4" unselectable="on"><i>4</i></div>
-					<div class="dialpad-button" data-value="5" unselectable="on"><i>5</i></div>
-					<div class="dialpad-button" data-value="6" unselectable="on"><i>6</i></div>
-					<div class="dialpad-button" data-value="7" unselectable="on"><i>7</i></div>
-					<div class="dialpad-button" data-value="8" unselectable="on"><i>8</i></div>
-					<div class="dialpad-button" data-value="9" unselectable="on"><i>9</i></div>
-					<div class="dialpad-button" data-value="*" unselectable="on"><i>*</i></div>
-					<div class="dialpad-button" data-value="0" unselectable="on"><i>0</i></div>
-					<div class="dialpad-button" data-value="#" unselectable="on"><i>#</i></div>
+				<div class="in-call-controls">
+					<div class="dialpad">
+						<div class="dialpad-button" data-value="1" unselectable="on"><i>1</i></div>
+						<div class="dialpad-button" data-value="2" unselectable="on"><i>2</i></div>
+						<div class="dialpad-button" data-value="3" unselectable="on"><i>3</i></div>
+						<div class="dialpad-button" data-value="4" unselectable="on"><i>4</i></div>
+						<div class="dialpad-button" data-value="5" unselectable="on"><i>5</i></div>
+						<div class="dialpad-button" data-value="6" unselectable="on"><i>6</i></div>
+						<div class="dialpad-button" data-value="7" unselectable="on"><i>7</i></div>
+						<div class="dialpad-button" data-value="8" unselectable="on"><i>8</i></div>
+						<div class="dialpad-button" data-value="9" unselectable="on"><i>9</i></div>
+						<div class="dialpad-button" data-value="*" unselectable="on"><i>*</i></div>
+						<div class="dialpad-button" data-value="0" unselectable="on"><i>0</i></div>
+						<div class="dialpad-button" data-value="#" unselectable="on"><i>#</i></div>
+					</div>
+					<div class="mute-container">
+						<div id="mute">
+							<i id="muteIcon" class="fa fa-microphone"></i>
+						</div>
+					</div>
+					<audio id="remoteAudio" style="display: none"/>
 				</div>
-				<div id="mute">
-					<i id="muteIcon" class="fa fa-microphone"></i>
-				</div>
-				<audio id="remoteAudio" style="display: none"/>
 			</div>
 		</div>
 
@@ -140,6 +145,6 @@
 		</script>
 		<script src="http://code.bandwidth.com/bandwidth-0.9.2.js"></script>
 		<script src="./chug.js"></script>
-		<script src="client/windowControls.js"></script>
+		<script src="./windowControls.js"></script>
 	</body>
 </html>

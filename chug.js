@@ -37,7 +37,11 @@ document.addEventListener("DOMContentLoaded", function () {
 	console.on("error", addLog);
 	console.on("info", addLog);
 
-	$(".expander").click(toggleControlsExpanded);
+	$(".controls-expander").click(toggleControlsExpanded);
+
+	$(".expander").click(togglePanelExpanded);
+
+	$("#identity").keyup(updateInfo);
 });
 
 function saveUserData () {
@@ -90,6 +94,8 @@ function onConfigLoaded () {
 			$("#toNumber").val(config.lastCall.to);
 			$("#identity").val(config.lastCall.options.identity);
 		}
+
+		updateInfo();
 	}
 }
 
@@ -138,10 +144,28 @@ function dtmfPressed (event) {
 
 function toggleControlsExpanded () {
 	$(".controls-extra").toggleClass("expanded");
+	updateInfo();
+}
+
+function togglePanelExpanded (event) {
+	var target = $(event.target);
+	var closestPanel = target.closest(".panel");
+	closestPanel.toggleClass("expanded");
 }
 
 function addLog (log) {
 	$(".logs").prepend($("<pre class='logitem'>" + _.escape(log) + "</pre>"));
+}
+
+function updateInfo () {
+	var id = $("#identity").val();
+
+	if (id) {
+		$(".controls-info-identity").text("Identity: " + id);
+	}
+	else {
+		$(".controls-info-identity").text("");
+	}
 }
 
 function refreshUI () {
@@ -172,6 +196,6 @@ function refreshUI () {
 		}
 	}
 	else {
-		$(".call").removeClass("connecting").removeClass("connected");
+		$(".call").removeClass("connecting").removeClass("in-call");
 	}
 }

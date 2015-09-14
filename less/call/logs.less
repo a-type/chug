@@ -1,0 +1,28 @@
+.call {
+	.log-list {
+		.panel-mixin();
+
+		overflow-y: hidden;
+
+		background: @color-gray;
+
+		.log-list-container {
+			overflow-y: auto;
+			overflow-x: hidden;
+
+			.logs {
+				display: flex;
+				flex-direction: column;
+
+				.logitem {
+					background: @color-white;
+					margin: 0px 0px 8px 0px;
+					padding: 8px 12px;
+					color: darken(@color-gray, 18%);
+					font-size: 12px;
+					overflow-wrap: break-word;
+				}
+			}
+		}
+	}
+}

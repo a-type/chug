@@ -16,11 +16,22 @@
 		margin: auto;
 		margin-top: 10%;
 
+		input[type="text"], input[type="password"] {
+			background: @color-glass;
+			border-bottom-color: @color-glass-dark;
+			color: @color-gray-dark;
+		}
+
 		h1 {
-			color: @color-primary;
+			color: @color-glass;
 			text-align: center;
 			display: block;
 			font-size: 64px;
+
+			text-shadow: 0 1px 0 @color-glass-dark,
+				0 2px 0 @color-glass-dark,
+				0 3px 0 @color-glass-dark,
+				0 4px 0 @color-glass-dark;
 		}
 	}
 

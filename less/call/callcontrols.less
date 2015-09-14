@@ -1,0 +1,121 @@
+.call {
+	.call-controls {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+
+		background-color: @color-primary;
+		border-top: 4px solid @color-secondary;
+
+		.controls-main {
+			display: flex;
+
+			height: 80px;
+
+			&>div {
+				margin: auto 12px;
+			}
+
+			.controls-expander {
+				flex: 0 0 48px;
+				color: @color-white;
+				font-size: 32px;
+				cursor: pointer;
+			}
+		}
+
+		.controls-extra {
+			height: 0;
+			overflow: hidden;
+
+			display: flex;
+
+			&.expanded {
+				height: 80px;
+			}
+
+			&>div {
+				margin: auto 12px;
+			}
+
+			label {
+				color: @color-secondary;
+				font-weight: bold;
+				margin-right: 8px;
+				position: relative;
+				top: 2px;
+			}
+		}
+	}
+
+	#hangup {
+		.icon-button(@color-secondary);
+
+		i {
+			transform: translate(-50%, -50%) rotate(135deg);
+		}
+	}
+
+	#connect {
+		.icon-button(@color-white);
+	}
+
+	#mute {
+		.icon-button(@color-secondary);
+		.icon-button-makesmall();
+	}
+
+	.controls-info {
+		display: flex;
+		flex: 1 0 auto;
+		justify-content: flex-end;
+
+		&>* {
+			color: @color-secondary;
+			margin: auto 12px;
+		}
+	}
+
+	.in-call-controls {
+		position: absolute;
+		right: 8px;
+		z-index: -10;
+		bottom: 100%;
+		transform: translateY(200%);
+		padding: 12px;
+
+		background: @color-primary;
+		border-top: 4px solid @color-secondary;
+
+		.dialpad {
+			display: flex;
+			flex-flow: row wrap;
+			justify-content: space-around;
+
+			width: (32px + 24px) * 3;
+
+			.dialpad-button {
+				.icon-button(@color-white);
+				.icon-button-makesmall();
+
+				margin: 12px;
+			}
+		}
+
+		.mute-container {
+			display: flex;
+
+			#mute {
+				margin: auto;
+			}
+		}
+	}
+
+	// STATES
+	&.in-call {
+		.in-call-controls {
+			transform: translateY(0);
+		}
+	}
+}

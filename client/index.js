@@ -22,7 +22,7 @@ Client.prototype.login = function (username, password, domain) {
 	});
 	phone.register();
 
-	phone.on("incomingCall", this.emit.bind(this, "stateChanged"));
+	phone.on("incomingCall", this.handleIncomingCall.bind(this));
 
 	return false;
 };
@@ -36,6 +36,8 @@ Client.prototype.handleIncomingCall = function (incomingCall) {
 	this.currentCall = incomingCall;
 	this.currentCall.on("ended", this.handleCallEnded.bind(this));
 	this.currentCall.on("connected", this.emit.bind(this, "stateChanged"));
+
+	this.emit("stateChanged");
 };
 
 Client.prototype.connectCall = function (to, options) {

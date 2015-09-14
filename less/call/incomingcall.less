@@ -1,0 +1,51 @@
+.call {
+	.incoming-call-info {
+		overflow-y: hidden;
+		display: flex;
+
+		flex-flow: row wrap;
+		justify-content: space-around;
+
+		position: fixed;
+		z-index: 200;
+		top: 0px;
+		left: 50%;
+
+		transform: translateX(-50%) translateY(-100%);
+
+		padding: 12px 32px;
+		background-color: @color-primary;
+		border-bottom: 4px solid @color-secondary;
+
+		b {
+			flex: 1 0 100%;
+			color: @color-secondary;
+			margin-bottom: 8px;
+		}
+
+		.button-container {
+			flex: 1 0 auto;
+			display: flex;
+
+			div, label {
+				margin: auto;
+			}
+		}
+
+		.answer {
+			.icon-button(@color-white);
+		}
+
+		.reject {
+			.icon-button(@color-secondary);
+		}
+	}
+
+	&.connecting {
+		&.incoming {
+			.incoming-call-info {
+				transform: translateX(-50%) translateY(0);
+			}
+		}
+	}
+}

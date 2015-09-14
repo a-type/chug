@@ -15,12 +15,15 @@
 .window-control-button {
 	width: 48px;
 	height: 32px;
-	color: @color-white;
 	cursor: pointer;
 	position: relative;
 
 	&:hover {
 		background: darken(@control-button-color, 4%);
+
+		i {
+			color: @color-black;
+		}
 	}
 
 	i {
@@ -29,6 +32,7 @@
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
+		color: @color-gray-dark;
 	}
 }
 
@@ -41,6 +45,10 @@
 
 	&:hover {
 		background: @color-primary;
+
+		i {
+			color: @color-white;
+		}
 	}
 }
 
@@ -58,5 +66,6 @@
 
 .titlebar-title {
 	.brand-font();
-	color: @color-primary;
+	color: @color-gray-dark;
+	margin-right: 12px;
 }
