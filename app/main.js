@@ -12,7 +12,19 @@ app.on("window-all-closed", function () {
 });
 
 app.on("ready", function () {
-	mainWindow = new BrowserWindow({ width : 960, height: 640, frame : false });
+
+	var windowOptions = {
+		width  : 960,
+		height : 640,
+		frame  : false
+	}
+
+	if (process.platform === "darwin") {
+		windowOptions.frame = true;
+		windowOptions["title-bar-style"] = "hidden-inset";
+	}
+
+	mainWindow = new BrowserWindow(windowOptions);
 	mainWindow.loadUrl("file://" + path.join(__dirname, "..", "index.html"));
 
 	if (process.env.DEBUG === "true") {

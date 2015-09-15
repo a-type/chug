@@ -42,6 +42,12 @@ document.addEventListener("DOMContentLoaded", function () {
 	$(".expander").click(togglePanelExpanded);
 
 	$("#identity").keyup(updateInfo);
+
+	if (process.platform === "darwin") {
+		$(".window-minimize").hide();
+		$(".window-maximize").hide();
+		$(".window-close").hide();
+	}
 });
 
 function saveUserData () {
