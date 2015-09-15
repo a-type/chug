@@ -22,6 +22,10 @@ Visit the [Releases](https://github.com/a-type/chug/releases) page for standalon
 
 Chug requires [Electron](https://github.com/atom/electron) pre-built binaries to be installed globally to run. After that, run `npm install` and `npm start`.
 
+## Why "Chug"?
+
+It's a SIP client. Get it?
+
 ## License
 
 Chug is MIT Licensed. Attribution is nice!
