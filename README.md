@@ -2,9 +2,11 @@
 
 # CHUG
 
-> A SIP client in Electron.js
+> A SIP client in Electron.js for the [Bandwidth Application Platform](http://www.bandwidth.com/application-platform)
 
 ## Usage
+
+Chug isn't a generalized SIP client right now. It is designed to work with a Bandwidth SIP endpoint. If that means something to you, though, it might be useful!
 
 Enter your SIP credentials on the login screen, enter a phone number, and go. All fields are automatically stored to a file in your app storage (i.e. AppData for Windows users). You can delete that file if you want to clear them (there's no GUI option for now).
 
