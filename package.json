@@ -4,7 +4,8 @@
   "description": "",
   "main": "app/main.js",
   "scripts": {
-    "start": "electron app/main.js"
+    "start" : "electron app/main.js",
+    "postinstall" : "grunt less"
   },
   "author": "Grant Forrest",
   "license": "All Rights Reserved",
