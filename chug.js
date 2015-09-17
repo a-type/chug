@@ -42,6 +42,12 @@ document.addEventListener("DOMContentLoaded", function () {
 	$(".expander").click(togglePanelExpanded);
 
 	$("#identity").keyup(updateInfo);
+
+	$("#logout").click(function () {
+		location.reload();
+	});
+
+	$("#clearData").click(clearUserData);
 });
 
 function saveUserData () {
@@ -80,6 +86,11 @@ function loadUserData () {
 	.catch(function (err) {
 		console.error("Config load failed: " + err.message);
 	});
+}
+
+function clearUserData () {
+	config = {};
+	return saveUserData();
 }
 
 function onConfigLoaded () {

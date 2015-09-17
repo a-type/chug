@@ -23,16 +23,17 @@
 	.expander {
 		background-color: @color-gray;
 		width: @panel-expander-width;
-		display: flex;
 		cursor: pointer;
+		position: relative;
 
 		.label {
-			margin: auto;
-
 			.label-text {
+				position: absolute;
+				top: 50%;
+				left: 50%;
 				margin: auto;
 				color: darken(@color-gray, 50%);
-				transform: rotateZ(-90deg) translateY(-5px);
+				transform: translate(-50%, -50%) rotateZ(-90deg);
 				.brand-font();
 				font-size: 16px;
 				text-transform: uppercase;
